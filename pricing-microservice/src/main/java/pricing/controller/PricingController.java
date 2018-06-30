@@ -32,7 +32,7 @@ public class PricingController {
         Collection<String> validationErrors = validateRentalPricingRequest(request);
         if (!validationErrors.isEmpty()) {
             PricingResponse response = RentalPricingResponse.builder().withMessages(validationErrors).build();
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
 
         PricingResponse response = rentalPricingService.getPricingResponse(request);
@@ -44,7 +44,7 @@ public class PricingController {
         Collection<String> validationErrors = validateReturnPricingRequest(request);
         if (!validationErrors.isEmpty()) {
             PricingResponse response = RentalPricingResponse.builder().withMessages(validationErrors).build();
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
 
         PricingResponse response = returnPricingService.getPricingResponse(request);
